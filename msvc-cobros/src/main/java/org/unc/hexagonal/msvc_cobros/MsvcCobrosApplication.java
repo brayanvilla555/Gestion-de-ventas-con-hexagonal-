@@ -1,0 +1,13 @@
+package org.unc.hexagonal.msvc_cobros;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MsvcCobrosApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MsvcCobrosApplication.class, args);
+	}
+
+}
