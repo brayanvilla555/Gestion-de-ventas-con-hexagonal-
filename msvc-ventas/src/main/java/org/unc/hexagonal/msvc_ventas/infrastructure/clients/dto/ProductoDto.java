@@ -1,15 +1,13 @@
-package org.unc.hexagonal.msvc_ventas.domain.models;
+package org.unc.hexagonal.msvc_ventas.infrastructure.clients.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
-public class Producto {
+@Setter
+public class ProductoDto {
     private Long id;
     private String nombre;
     private String categoria;

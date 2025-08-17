@@ -4,23 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AditionalVentaInfo {
+public class Cliente {
     private Long id;
-
-    //private TipoDocumentoDto tipoDocumento;
-
     private String nombre;
-
     private String apellido;
-
     private String correo;
-
     private String telefono;
-
     private String numeroIdentificacion;
-
     private Boolean estado;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

@@ -5,9 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.unc.hexagonal.msvc_ventas.application.dto.VentaDetalleResponse;
 import org.unc.hexagonal.msvc_ventas.application.services.VentaService;
-import org.unc.hexagonal.msvc_ventas.domain.models.AditionalVentaInfo;
 import org.unc.hexagonal.msvc_ventas.domain.models.Venta;
+import org.unc.hexagonal.msvc_ventas.domain.ports.in.GetVentaDetalleUseCase;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ import java.util.List;
 public class VentaController {
 
     private final VentaService ventaService;
+    private final GetVentaDetalleUseCase getVentaDetalleUseCase;
 
     @PostMapping
     public ResponseEntity<Venta> createVenta(
@@ -68,11 +70,15 @@ public class VentaController {
         return ResponseEntity.ok(ventaUpdated);
     }
 
-    @GetMapping("/{id-cliente}/cliente")
-    public ResponseEntity<?> getVentaCliente(
-            @PathVariable(name = "id-cliente") Long id
-    ){
-        AditionalVentaInfo aditionalVentaInfo = ventaService.getAditionalVentaInfo(id);
-        return ResponseEntity.ok(aditionalVentaInfo);
+    @GetMapping("venta-detalle-completo/{id-venta}")
+    public ResponseEntity<VentaDetalleResponse> getVentaDetalle(
+            @PathVariable(name = "id-venta") Long id
+    ) {
+        return ResponseEntity.ok(getVentaDetalleUseCase.getVentaDetalle(id));
+    }
+
+    @GetMapping("ventas-detalle-completo")
+    public ResponseEntity<List<VentaDetalleResponse>> getVentasDetalle() {
+        return ResponseEntity.ok(getVentaDetalleUseCase.getVentasDetalle());
     }
 }
