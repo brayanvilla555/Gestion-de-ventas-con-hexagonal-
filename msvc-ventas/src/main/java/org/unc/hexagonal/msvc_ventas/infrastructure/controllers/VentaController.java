@@ -70,6 +70,14 @@ public class VentaController {
         return ResponseEntity.ok(ventaUpdated);
     }
 
+    @GetMapping("venta-por-clienta/{id-cliente}")
+    public ResponseEntity<List<Venta>> getVentasPorCliente(
+            @PathVariable(name = "id-cliente") Long idCliente
+    ) {
+        List<Venta> ventas = ventaService.getVentaByClienteId(idCliente);
+        return ResponseEntity.ok(ventas);
+    }
+
     @GetMapping("venta-detalle-completo/{id-venta}")
     public ResponseEntity<VentaDetalleResponse> getVentaDetalle(
             @PathVariable(name = "id-venta") Long id

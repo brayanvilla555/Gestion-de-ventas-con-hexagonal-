@@ -11,4 +11,5 @@ public interface VentaRepositoryPort {
     List<Venta> getAllVentas();
     Optional<Venta> updateVenta(Long id,Venta venta);
     boolean deleteVenta(Long id);
+    List<Venta> getVentaByClienteId(Long clienteId);
 }

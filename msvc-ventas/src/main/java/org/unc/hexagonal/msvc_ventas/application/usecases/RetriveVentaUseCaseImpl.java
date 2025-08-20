@@ -25,4 +25,9 @@ public class RetriveVentaUseCaseImpl implements RetriveVentaUseCase {
     public List<Venta> getAllVentas(){
         return ventaRepositoryPort.getAllVentas();
     }
+
+    @Override
+    public List<Venta> getVentaByClienteId(Long numero) {
+        return ventaRepositoryPort.getVentaByClienteId(numero);
+    }
 }
