@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface RetriveVentaUseCase {
     Optional<Venta> getVenta(Long id);
     List<Venta> getAllVentas();
+    List<Venta> getVentaByClienteId(Long clienteId);
 }

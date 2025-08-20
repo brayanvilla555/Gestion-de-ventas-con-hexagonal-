@@ -64,6 +64,11 @@ public class VentaService implements CreateVentaUseCase, DeleteVentaUseCase, Get
     }
 
     @Override
+    public List<Venta> getVentaByClienteId(Long clienteId) {
+        return retriveVentaUseCase.getVentaByClienteId(clienteId);
+    }
+
+    @Override
     public Optional<Venta> updateVenta(Long id, Venta venta) {
 
         return updateVentaUseCase.updateVenta(id,venta);
