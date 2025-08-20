@@ -5,10 +5,10 @@ import org.unc.hexagonal.msvc_productos.domain.models.EstadoProducto;
 import org.unc.hexagonal.msvc_productos.domain.models.Producto;
 import org.unc.hexagonal.msvc_productos.domain.ports.out.ProductoRepositoryPort;
 
-public class ActualizarPrecioEstadoUseCase implements org.unc.hexagonal.msvc_productos.domain.ports.in.ActualizarPrecioEstadoUseCase {
+public class ActualizarPrecioEstadoUseCaseImpl implements org.unc.hexagonal.msvc_productos.domain.ports.in.ActualizarPrecioEstadoUseCase {
   private final ProductoRepositoryPort productoRepositoryPort;
 
-    public ActualizarPrecioEstadoUseCase(ProductoRepositoryPort productoRepositoryPort) {
+    public ActualizarPrecioEstadoUseCaseImpl(ProductoRepositoryPort productoRepositoryPort) {
         this.productoRepositoryPort = productoRepositoryPort;
     }
 

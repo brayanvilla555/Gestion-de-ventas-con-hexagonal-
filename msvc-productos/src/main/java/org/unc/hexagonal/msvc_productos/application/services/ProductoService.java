@@ -48,7 +48,6 @@ public class ProductoService implements ActualizarPrecioEstadoUseCase,Actualizar
       return  eliminarProductoUseCase.eliminar(id);
 
     }
-
     @Override
     @Transactional(readOnly = true)
     public Producto buscarById(Long id) {
