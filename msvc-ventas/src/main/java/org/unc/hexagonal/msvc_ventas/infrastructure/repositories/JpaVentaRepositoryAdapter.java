@@ -14,6 +14,7 @@ import java.util.Optional;
 @Repository
 public class JpaVentaRepositoryAdapter implements VentaRepositoryPort {
 
+
     private final JpaVentaRepository jpaVentaRepository;
 
     public JpaVentaRepositoryAdapter(JpaVentaRepository jpaVentaRepository) {
@@ -80,5 +81,12 @@ public class JpaVentaRepositoryAdapter implements VentaRepositoryPort {
         }
         jpaVentaRepository.deleteById(id);
         return true;
+    }
+
+    @Override
+    public List<Venta> getVentaByClienteId(Long clienteId) {
+        List<VentaEntity> listVentaEntity = jpaVentaRepository.findByClienteId(clienteId);
+        List<Venta> listVenta = VentaMapper.toListVenta(listVentaEntity);
+        return listVenta;
     }
 }

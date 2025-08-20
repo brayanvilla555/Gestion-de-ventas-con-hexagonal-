@@ -1,7 +1,9 @@
 package org.unc.hexagonal.msvc_ventas.domain.ports.out;
 
-import org.unc.hexagonal.msvc_ventas.domain.models.AditionalVentaInfo;
+import org.unc.hexagonal.msvc_ventas.domain.models.Cliente;
+import org.unc.hexagonal.msvc_ventas.domain.models.Producto;
 
 public interface ExternalServicePort {
-    AditionalVentaInfo getAditionalVentaInfo(Long id);
+    Cliente getClienteById(Long clienteId);
+    Producto getProductoById(Long productoId);
 }
