@@ -7,9 +7,9 @@ import org.unc.hexagonal.msvc_ventas.infrastructure.clients.dto.ClienteDto;
 
 @FeignClient(
         name = "msvc-clientes",
-        url = "http://localhost:8090/clientes"
+        url = "http://localhost:8090/api/cliente"
 )
 public interface ClienteFeignClient {
-    @GetMapping("/buscar/{id}")
+    @GetMapping("/{id}")
     ClienteDto getCliente(@PathVariable("id") Long id);
 }
