@@ -1,0 +1,59 @@
+package org.unc.hexagonal.msvc_clientes.application.services;
+
+import org.springframework.transaction.annotation.Transactional;
+import org.unc.hexagonal.msvc_clientes.domain.models.Cliente;
+import org.unc.hexagonal.msvc_clientes.domain.views.Venta;
+import org.unc.hexagonal.msvc_clientes.domain.ports.in.*;
+
+import java.util.List;
+import java.util.Optional;
+
+public class ClienteService implements ActualizarClienteUseCase, CrearClienteUseCase, EliminarClienteUseCase, ListClienteUseCase, GetInformacionAdicionalClienteUseCase {
+
+    private final CrearClienteUseCase crearClienteUseCase;
+    private final ListClienteUseCase listClienteUseCase;
+    private final ActualizarClienteUseCase actualizarClienteUseCase;
+    private final EliminarClienteUseCase eliminarClienteUseCase;
+    private final GetInformacionAdicionalClienteUseCase getInformacionAdicionalClienteUseCase;
+
+    public ClienteService(CrearClienteUseCase crearClienteUseCase, ListClienteUseCase listClienteUseCase, ActualizarClienteUseCase actualizarClienteUseCase, EliminarClienteUseCase eliminarClienteUseCase, GetInformacionAdicionalClienteUseCase getInformacionAdicionalClienteUseCase) {
+        this.crearClienteUseCase = crearClienteUseCase;
+        this.listClienteUseCase = listClienteUseCase;
+        this.actualizarClienteUseCase = actualizarClienteUseCase;
+        this.eliminarClienteUseCase = eliminarClienteUseCase;
+        this.getInformacionAdicionalClienteUseCase = getInformacionAdicionalClienteUseCase;
+    }
+
+    @Override
+    public Optional<Cliente> actualizar(Long id, Cliente cliente) {
+        return actualizarClienteUseCase.actualizar(id, cliente);
+    }
+
+    @Override
+    public Cliente crear(Cliente cliente) {
+        return crearClienteUseCase.crear(cliente);
+    }
+
+    @Override
+    public boolean eliminar(Long id) {
+        return eliminarClienteUseCase.eliminar(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<Cliente> buscarById(Long id) {
+        return listClienteUseCase.buscarById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Cliente> listar() {
+        return listClienteUseCase.listar();
+    }
+
+
+    @Override
+    public List<Venta> getListaVentas(Long idCliente) {
+        return getInformacionAdicionalClienteUseCase.getListaVentas(idCliente);
+    }
+}

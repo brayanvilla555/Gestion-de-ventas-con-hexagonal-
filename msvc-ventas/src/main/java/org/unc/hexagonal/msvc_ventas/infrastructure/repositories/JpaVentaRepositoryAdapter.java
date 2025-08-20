@@ -14,6 +14,7 @@ import java.util.Optional;
 @Repository
 public class JpaVentaRepositoryAdapter implements VentaRepositoryPort {
 
+
     private final JpaVentaRepository jpaVentaRepository;
 
     public JpaVentaRepositoryAdapter(JpaVentaRepository jpaVentaRepository) {

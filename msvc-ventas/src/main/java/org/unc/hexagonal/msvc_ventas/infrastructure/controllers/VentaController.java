@@ -70,6 +70,7 @@ public class VentaController {
         return ResponseEntity.ok(ventaUpdated);
     }
 
+
     @GetMapping("venta-detalle-completo/{id-venta}")
     public ResponseEntity<VentaDetalleResponse> getVentaDetalle(
             @PathVariable(name = "id-venta") Long id
