@@ -12,6 +12,6 @@ import java.util.List;
         url = "http://localhost:8091/api/ventas"
 )
 public interface VentasFeignClient {
-    @GetMapping("/ventascliente/{idcliente}")
+    @GetMapping("/venta-por-clienta/{idcliente}")
     List<VentaDto> getVenta(@PathVariable("idcliente") Long id);
 }

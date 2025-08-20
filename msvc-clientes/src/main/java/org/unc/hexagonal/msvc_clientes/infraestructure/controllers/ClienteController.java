@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.unc.hexagonal.msvc_clientes.application.dto.ClienteVentaResponseDto;
 import org.unc.hexagonal.msvc_clientes.application.services.ClienteService;
 import org.unc.hexagonal.msvc_clientes.domain.models.Cliente;
 import org.unc.hexagonal.msvc_clientes.domain.views.Venta;
@@ -63,6 +64,11 @@ public class ClienteController {
         return ResponseEntity.ok(ventas);
     }
 
+
+    @GetMapping("/cliente-detalle-completo/{idCliente}")
+    public ResponseEntity<ClienteVentaResponseDto> getClienteDetalle(@PathVariable Long idCliente) {
+        return ResponseEntity.ok(clienteService.obtenerClienteDetalleCompleto(idCliente));
+    }
 
 
 

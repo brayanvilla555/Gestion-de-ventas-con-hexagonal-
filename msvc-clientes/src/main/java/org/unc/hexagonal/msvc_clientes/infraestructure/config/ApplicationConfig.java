@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.unc.hexagonal.msvc_clientes.application.services.ClienteService;
 import org.unc.hexagonal.msvc_clientes.application.usecases.*;
+import org.unc.hexagonal.msvc_clientes.domain.ports.in.GetClienteDetalleCompletoUseCase;
 import org.unc.hexagonal.msvc_clientes.domain.ports.in.GetInformacionAdicionalClienteUseCase;
 import org.unc.hexagonal.msvc_clientes.domain.ports.out.ClienteRepositoryPort;
 import org.unc.hexagonal.msvc_clientes.domain.ports.out.ExternalServicePort;
@@ -20,13 +21,14 @@ import java.lang.ref.Cleaner;
 public class ApplicationConfig {
 
    @Bean
-    public ClienteService clienteService(ClienteRepositoryPort clienteRepositoryPort, GetInformacionAdicionalClienteUseCase getInformacionAdicionalClienteUseCase){
+    public ClienteService clienteService(ClienteRepositoryPort clienteRepositoryPort, GetInformacionAdicionalClienteUseCase getInformacionAdicionalClienteUseCase, GetClienteDetalleCompletoUseCase getClienteDetalleCompletoUseCase){
         return new ClienteService(
                 new CrearClienteUseCaseImpl(clienteRepositoryPort),
                 new ListClienteUseCaseImpl(clienteRepositoryPort),
                 new ActualizarClienteUseCaseImpl(clienteRepositoryPort),
                 new EliminarClienteUseCaseImpl(clienteRepositoryPort),
-                getInformacionAdicionalClienteUseCase
+                getInformacionAdicionalClienteUseCase,
+                getClienteDetalleCompletoUseCase
         );
     }
 
@@ -44,6 +46,14 @@ public class ApplicationConfig {
     public ExternalServicePort externalServicePort(VentasFeignClient ventasFeignClient){
         return new ExternalServiceAdapter(ventasFeignClient);
     }
+
+
+    @Bean
+    public GetClienteDetalleCompletoUseCase getClienteDetalleCompletoUseCase(ClienteRepositoryPort clienteRepositoryPort,
+                                                                             ExternalServicePort externalServicePort) {
+        return new GetClienteDetalleCompletoUseCaseImpl(clienteRepositoryPort, externalServicePort);
+    }
+
 
 
 }

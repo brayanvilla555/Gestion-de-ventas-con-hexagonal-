@@ -1,5 +1,7 @@
 package org.unc.hexagonal.msvc_clientes.infraestructure.clients.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 import org.unc.hexagonal.msvc_clientes.domain.views.EstadoVenta;
 import org.unc.hexagonal.msvc_clientes.domain.views.Venta;
 
@@ -8,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@Getter
+@Setter
 public class VentaDto {
     private Long id;
     private LocalDateTime fechaVenta;

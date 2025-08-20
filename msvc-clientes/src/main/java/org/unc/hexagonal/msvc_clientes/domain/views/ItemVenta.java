@@ -1,7 +1,9 @@
 package org.unc.hexagonal.msvc_clientes.domain.views;
 
 
+import lombok.Getter;
 
+@Getter
 public class ItemVenta {
     private Long id;
     private Long productoId;

@@ -1,6 +1,7 @@
 package org.unc.hexagonal.msvc_clientes.application.services;
 
 import org.springframework.transaction.annotation.Transactional;
+import org.unc.hexagonal.msvc_clientes.application.dto.ClienteVentaResponseDto;
 import org.unc.hexagonal.msvc_clientes.domain.models.Cliente;
 import org.unc.hexagonal.msvc_clientes.domain.views.Venta;
 import org.unc.hexagonal.msvc_clientes.domain.ports.in.*;
@@ -15,13 +16,15 @@ public class ClienteService implements ActualizarClienteUseCase, CrearClienteUse
     private final ActualizarClienteUseCase actualizarClienteUseCase;
     private final EliminarClienteUseCase eliminarClienteUseCase;
     private final GetInformacionAdicionalClienteUseCase getInformacionAdicionalClienteUseCase;
+    private final GetClienteDetalleCompletoUseCase getClienteDetalleCompleto;
 
-    public ClienteService(CrearClienteUseCase crearClienteUseCase, ListClienteUseCase listClienteUseCase, ActualizarClienteUseCase actualizarClienteUseCase, EliminarClienteUseCase eliminarClienteUseCase, GetInformacionAdicionalClienteUseCase getInformacionAdicionalClienteUseCase) {
+    public ClienteService(CrearClienteUseCase crearClienteUseCase, ListClienteUseCase listClienteUseCase, ActualizarClienteUseCase actualizarClienteUseCase, EliminarClienteUseCase eliminarClienteUseCase, GetInformacionAdicionalClienteUseCase getInformacionAdicionalClienteUseCase, GetClienteDetalleCompletoUseCase getClienteDetalleCompleto) {
         this.crearClienteUseCase = crearClienteUseCase;
         this.listClienteUseCase = listClienteUseCase;
         this.actualizarClienteUseCase = actualizarClienteUseCase;
         this.eliminarClienteUseCase = eliminarClienteUseCase;
         this.getInformacionAdicionalClienteUseCase = getInformacionAdicionalClienteUseCase;
+        this.getClienteDetalleCompleto = getClienteDetalleCompleto;
     }
 
     @Override
@@ -56,4 +59,15 @@ public class ClienteService implements ActualizarClienteUseCase, CrearClienteUse
     public List<Venta> getListaVentas(Long idCliente) {
         return getInformacionAdicionalClienteUseCase.getListaVentas(idCliente);
     }
+
+
+
+    // aqui me queda la duda si se implementa
+    @Transactional(readOnly = true)
+    public ClienteVentaResponseDto obtenerClienteDetalleCompleto(Long clienteId) {
+        return getClienteDetalleCompleto.ejecutar(clienteId);
+    }
+
+
+
 }

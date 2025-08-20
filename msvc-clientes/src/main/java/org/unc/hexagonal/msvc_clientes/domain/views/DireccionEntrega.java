@@ -1,7 +1,9 @@
 package org.unc.hexagonal.msvc_clientes.domain.views;
 
 
+import lombok.Getter;
 
+@Getter
 public class DireccionEntrega {
     private String referencia;
     private String calle;

@@ -1,10 +1,12 @@
 package org.unc.hexagonal.msvc_clientes.domain.views;
 
+import lombok.Getter;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@   Getter
 public class Venta {
     private Long id;
     private LocalDateTime fechaVenta;
