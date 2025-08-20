@@ -7,4 +7,6 @@ import java.util.List;
 public interface GetVentaDetalleUseCase {
     VentaDetalleResponse getVentaDetalle(Long ventaId);
     List<VentaDetalleResponse> getVentasDetalle();
+
+
 }

@@ -55,8 +55,7 @@ public class AplicationConfig {
     }
 
     @Bean
-    public GetVentaDetalleUseCase getVentaDetalleUseCase(
-            VentaRepositoryPort ventaRepositoryPort,
+    public GetVentaDetalleUseCase getVentaDetalleUseCase(VentaRepositoryPort ventaRepositoryPort,
             @Qualifier("getInformacionAdicionalVentaUseCase") GetInformacionAdicionalVentaUseCase getInformacionAdicionalVentaUseCase
     ) {
         return new GetVentaDetalleUseCaseImpl(ventaRepositoryPort, getInformacionAdicionalVentaUseCase);

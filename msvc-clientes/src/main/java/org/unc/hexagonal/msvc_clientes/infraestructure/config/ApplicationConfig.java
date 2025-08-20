@@ -32,6 +32,10 @@ public class ApplicationConfig {
         );
     }
 
+
+//    El método devuelve tipo ClienteRepositoryPort (la interfaz).
+//    Pero el objeto real que devuelves es un JpaClienteRepositoryAdapter (la implementación).
+//    Entonces, cuando otro bean pide un ClienteRepositoryPort, Spring le da un JpaClienteRepositoryAdapter.
     @Bean
     public ClienteRepositoryPort clienteRepositoryPort(JpaClienteRepositoryAdapter jpaClienteRepositoryAdapter){
         return jpaClienteRepositoryAdapter;
